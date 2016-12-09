@@ -35,13 +35,46 @@
                       );}
                     });
 
+            var postComment = React.createClass({
+                  propTypes: {
+                    id: React.PropTypes.number.isRequired,
+                    content: React.PropTypes.string.isRequired,
+                    user: React.PropTypes.string.isRequired
+                  },
+                render: function() {
+                  return (
+                    React.createElement('div', {
+                      className: 'comment'
+                    },
+                      React.createElement('h2', {
+                        className: 'commentAuthor'
+                      },
+                      this.props.user,
+                      React.createElement('span', {
+                        className: 'commentContent'
+                      },
+                      this.props.content
+                     )
+                   )
+                 )
+               );
+             }
+           });
+
           var App = React.createElement('div', {},
                       React.createElement('h1', {}, "Social App"),
                       React.createElement(userPost, {
                       id: 1,
                       content: "Getting started with React",
                       user: 'heather'
-                    }));
+                    }),
+                  React.createElement(postComment, {
+                    id: 2,
+                    user: 'stephen',
+                    content: "Have fun!"
+                  })
+                );
+
         ReactDOM.render(App, mountTarget);
     </script>
   </body>
